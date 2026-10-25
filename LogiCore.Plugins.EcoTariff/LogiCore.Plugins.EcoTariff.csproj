@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PluginsOutputDir>$(MSBuildThisFileDirectory)..\LogiCore.App\bin\$(Configuration)\$(TargetFramework)\plugins\</PluginsOutputDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LogiCore.Domain\LogiCore.Domain.csproj">
+      <Private>false</Private>
+    </ProjectReference>
+  </ItemGroup>
+
+  <Target Name="CopyPluginToApp" AfterTargets="Build">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(PluginsOutputDir)" />
+  </Target>
+
+</Project>
